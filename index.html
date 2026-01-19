@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Závěrečné setkání | Konference 23.-24. 1.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+            --accent: #3b82f6;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        /* Intro Section */
+        .intro {
+            background: var(--bg-light);
+            padding: 4rem 0;
+            margin-top: -3rem;
+            border-radius: 2rem 2rem 0 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        /* Timeline */
+        .timeline-section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent));
+            transform: translateX(-50%);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4rem 0 3rem;
+            position: relative;
+        }
+
+        .day-header h2 {
+            background: white;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            z-index: 2;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item.left .content {
+            margin-left: 0;
+            margin-right: calc(50% + 3rem);
+            text-align: right;
+        }
+
+        .timeline-item.right .content {
+            margin-left: calc(50% + 3rem);
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            width: 28px;
+            height: 28px;
+            border-width: 5px;
+            border-color: var(--accent);
+        }
+
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-item:hover .content {
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .time {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .content p {
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .workshops {
+            margin-top: 1.5rem;
+        }
+
+        .workshop {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .workshop:hover {
+            background: #f3f4f6;
+            transform: translateX(5px);
+        }
+
+        .workshop h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .workshop-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .workshop-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .workshop-meta span::before {
+            content: '→';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .workshop-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 0.75rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #fef3c7;
+            color: #92400e;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-item.left .content,
+            .timeline-item.right .content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .day-header h2 {
+                font-size: 1.25rem;
+                padding: 0.75rem 2rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Závěrečné setkání</h1>
+            <p class="subtitle">23. – 24. ledna 2026</p>
+        </div>
+    </header>
+
+    <section class="intro">
+        <div class="container">
+            <div class="intro-content">
+                <p>Ke konci tohoto týdne (23. a 24. 1.) nás čeká závěrečné setkání. Moc se na vás těšíme, snad vás dorazí co nejvíce! Program jsme doteď ladili, čekali jsme i na odezvu ohledně vašeho zapojení, každopádně se setkání bude mít takto:</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Program</h2>
+
+            <div class="timeline">
+                <!-- Pátek 23. 1. -->
+                <div class="day-header fade-in">
+                    <h2>📅 Pátek 23. 1.</h2>
+                </div>
+
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">9:30 - 12:00</span>
+                        <h3>Dopolední workshopy</h3>
+                        <p>Vybíráte si dle zájmu, nálady apod.</p>
+
+                        <div class="workshops">
+                            <div class="workshop">
+                                <h4>WORKSHOP č. 1: Spekulace, strategie a budoucnost neformální péče</h4>
+                                <div class="workshop-meta">
+                                    <span>Roman Sellner Novotný</span>
+                                    <span>Jen fyzicky na FF</span>
+                                </div>
+                                <div class="workshop-description">
+                                    Populace Česka stárne. Podle vývoje demografických křivek bude v roce 2050 takřka třetina populace v seniorském věku, což bude krom velkého tlaku na důchodový systém extrémně zatěžovat i oblast neformální péče. Pokud s tím chceme něco udělat a v budoucnosti se z toho jako neformální pečující nezbláznit, musíme to udělat teď.<br><br>
+                                    V rámci setkání si řekneme něco o spekulativně-strategickém designovém procesu a ukážeme si to na případovce projektu z MPSV. V rámci workshopu se pak zkusíme prostřednictvím několika scénářů vcítit do nás jako budoucích pečujících, řekneme si, jaké pocity, obavy nebo potřeby ve vztahu k budoucnosti máme a zkusíme si spekulativně vymyslet možná řešení ve formě technologií nebo sociálních inovací.
+                                </div>
+                            </div>
+
+                            <div class="workshop">
+                                <h4>WORKSHOP č. 2: AI bez magie: Od konverzace k vibecodingu</h4>
+                                <div class="workshop-meta">
+                                    <span>Vojtěch Velísek</span>
+                                    <span>Fyzicky na FF i online (MS Teams)</span>
+                                </div>
+                                <div class="workshop-description">
+                                    Workshop nabízí praktický vstup do světa umělé inteligence bez zbytečného technického žargonu. V první části demystifikujeme AI – vysvětlíme, co se skutečně skrývá za pojmy jako „velké jazykové modely", jak tyto systémy fungují a kde leží jejich možnosti i limity.<br><br>
+                                    Druhá část se zaměří na konverzační AI jako pracovní nástroj. Ukážeme si, jak efektivně formulovat dotazy, jak nastavit kontext konverzace pro lepší výsledky a jak z AI asistentů vytěžit maximum pro studium i práci.<br><br>
+                                    Ve třetí části představíme vibecoding – přístup k programování, kde místo psaní kódu popisujete, co chcete vytvořit, a AI generuje funkční řešení.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">12:00 - 13:30</span>
+                        <h3>Obědová pauza</h3>
+                        <p>Můžete využít toho, že se zase vidíte a vyrazit někam společně.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">13:30 - 16:30</span>
+                        <h3>Odpolední workshop</h3>
+
+                        <div class="workshops">
+                            <div class="workshop">
+                                <h4>Konflikty a náročné situace při facilitaci</h4>
+                                <div class="workshop-meta">
+                                    <span>Tereza Kosnarová</span>
+                                    <span>Jen fyzicky na FF</span>
+                                </div>
+                                <span class="badge">⚠️ Nutná registrace - omezený počet míst!</span>
+                                <a href="https://forms.gle/pS8KSoQGzscarKyNA" target="_blank" class="link">→ Registrace zde</a>
+                                <div class="workshop-description">
+                                    <strong>Témata:</strong><br>
+                                    • Náročné situace, na které můžeme během facilitace narazit<br>
+                                    • Intervence a první pomoc v náročných situacích / během konfliktů<br>
+                                    • Čemu se věnovat v rámci přípravy, abychom se na náročné situace připravili<br>
+                                    • Eskalace / deeskalace konfliktu<br>
+                                    • Vnitřní práce a seberegulační mechanismy<br><br>
+                                    Bude to hodně interaktivní a založeno na vaší energii a ochotě sdílet a ptát se. Kromě diskuze si vyzkoušíme individuální i párové aktivity, inner work, fyzické aktivity + možnost formátu "hot seat".
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">16:30 - 18:00</span>
+                        <h3>Vaše sdílení</h3>
+                        <p>Sdílení formou Pecha Kucha</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">18:00 / 18:30</span>
+                        <h3>Společná večeře</h3>
+                        <p>Kde: <a href="https://www.gardenfoodconcept.cz/kontakt/" target="_blank" class="link">Garden Food Concept</a></p>
+                    </div>
+                </div>
+
+                <!-- Sobota 24. 1. -->
+                <div class="day-header fade-in">
+                    <h2>📅 Sobota 24. 1.</h2>
+                </div>
+
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">9:30 - 12:00</span>
+                        <h3>Dopolední workshopy</h3>
+                        <p>Tyto workshopy navazují na předměty v daném semestru.</p>
+
+                        <div class="workshops">
+                            <div class="workshop">
+                                <h4>WORKSHOP pro druháky: Interaction relabelling</h4>
+                                <div class="workshop-meta">
+                                    <span>Dominika Potužáková a Petr Kosnar</span>
+                                    <span>Jen fyzicky na FF (místnost B.24)</span>
+                                </div>
+                            </div>
+
+                            <div class="workshop">
+                                <h4>WORKSHOP pro třeťáky: Learning design v praxi</h4>
+                                <div class="workshop-meta">
+                                    <span>Simona Kramosilová a Michal Černý</span>
+                                    <span>Jen fyzicky na FF (místnost B.23)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">12:00 - 13:30</span>
+                        <h3>Obědová pauza</h3>
+                        <p>Můžete využít toho, že se zase vidíte a vyrazit někam společně.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">13:30 - 16:30</span>
+                        <h3>Prostor pro vaše sdílení</h3>
+                        <p>Pokračování prezentací a diskuzí.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="content">
+                        <span class="time">17:00</span>
+                        <h3>Návštěva vodojemů v Brně</h3>
+                        <p>Pro zájemce. Více info na: <a href="https://vodojemybrno.cz" target="_blank" class="link">vodojemybrno.cz</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Těšíme se na vás!</p>
+            <p>Závěrečné setkání | 23.-24. 1. 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade in on scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add pulse animation to timeline dots on hover
+        document.querySelectorAll('.timeline-dot').forEach(dot => {
+            dot.addEventListener('mouseenter', function() {
+                this.style.animation = 'pulse 0.6s ease-in-out';
+            });
+            dot.addEventListener('animationend', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Add CSS for pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: translateX(-50%) scale(1); }
+                50% { transform: translateX(-50%) scale(1.3); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
