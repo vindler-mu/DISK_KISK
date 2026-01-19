@@ -42,7 +42,7 @@
         header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
-            padding: 4rem 0 6rem;
+            padding: 2.5rem 0 3.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -66,15 +66,15 @@
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             position: relative;
             letter-spacing: -0.02em;
         }
 
         .subtitle {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 400;
             opacity: 0.95;
             position: relative;
@@ -83,9 +83,9 @@
         /* Intro Section */
         .intro {
             background: var(--bg-light);
-            padding: 4rem 0;
-            margin-top: -3rem;
-            border-radius: 2rem 2rem 0 0;
+            padding: 2rem 0;
+            margin-top: -2rem;
+            border-radius: 1.5rem 1.5rem 0 0;
             position: relative;
             z-index: 1;
         }
@@ -94,29 +94,29 @@
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-            font-size: 1.125rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.6;
             color: var(--text-light);
         }
 
         /* Timeline */
         .timeline-section {
-            padding: 5rem 0;
+            padding: 3rem 0;
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 4rem;
+            margin-bottom: 2.5rem;
             color: var(--text-dark);
             letter-spacing: -0.02em;
         }
 
         .timeline {
             position: relative;
-            padding: 2rem 0;
+            padding: 1rem 0;
         }
 
         .timeline::before {
@@ -134,16 +134,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 4rem 0 3rem;
+            margin: 2.5rem 0 1.5rem;
             position: relative;
         }
 
         .day-header h2 {
             background: white;
-            padding: 1rem 3rem;
+            padding: 0.75rem 2rem;
             border-radius: 50px;
             box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--primary-color);
             z-index: 2;
@@ -151,7 +151,7 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.6s ease-out forwards;
@@ -207,8 +207,8 @@
 
         .content {
             background: white;
-            padding: 2rem;
-            border-radius: 1rem;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
@@ -221,40 +221,46 @@
 
         .time {
             display: inline-block;
-            padding: 0.4rem 1rem;
+            padding: 0.35rem 0.9rem;
             background: var(--primary-color);
             color: white;
             border-radius: 50px;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .content h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--text-dark);
         }
 
         .content p {
             color: var(--text-light);
-            margin-bottom: 0.75rem;
-            line-height: 1.7;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .workshops {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .workshop {
             background: var(--bg-light);
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 0.75rem;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             border-left: 4px solid var(--accent);
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        .workshop.year-specific {
+            border-left-color: #8b5cf6;
+            background: #faf5ff;
         }
 
         .workshop:hover {
@@ -262,39 +268,64 @@
             transform: translateX(5px);
         }
 
+        .workshop.year-specific:hover {
+            background: #f3e8ff;
+        }
+
         .workshop h4 {
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .workshop-meta {
             display: flex;
-            gap: 1.5rem;
+            gap: 0.75rem;
             font-size: 0.875rem;
-            color: var(--text-light);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             flex-wrap: wrap;
-        }
-
-        .workshop-meta span {
-            display: flex;
             align-items: center;
-            gap: 0.5rem;
         }
 
-        .workshop-meta span::before {
-            content: '→';
-            color: var(--accent);
-            font-weight: bold;
+        .instructor {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .instructor::before {
+            content: '👤';
+            font-size: 1rem;
+        }
+
+        .location-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .location-badge.physical {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .location-badge.hybrid {
+            background: #d1fae5;
+            color: #065f46;
         }
 
         .workshop-description {
             color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-top: 0.5rem;
         }
 
         .badge {
@@ -326,23 +357,25 @@
         footer {
             background: var(--text-dark);
             color: white;
-            padding: 3rem 0;
+            padding: 2rem 0;
             text-align: center;
         }
 
         footer p {
             opacity: 0.8;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
             }
 
             .section-title {
-                font-size: 1.75rem;
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
             }
 
             .timeline::before {
@@ -361,8 +394,16 @@
             }
 
             .day-header h2 {
-                font-size: 1.25rem;
-                padding: 0.75rem 2rem;
+                font-size: 1.125rem;
+                padding: 0.6rem 1.5rem;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .workshop {
+                padding: 1rem;
             }
         }
 
@@ -416,25 +457,22 @@
                             <div class="workshop">
                                 <h4>WORKSHOP č. 1: Spekulace, strategie a budoucnost neformální péče</h4>
                                 <div class="workshop-meta">
-                                    <span>Roman Sellner Novotný</span>
-                                    <span>Jen fyzicky na FF</span>
+                                    <span class="instructor">Roman Sellner Novotný</span>
+                                    <span class="location-badge physical">📍 Fyzicky na FF</span>
                                 </div>
                                 <div class="workshop-description">
-                                    Populace Česka stárne. Podle vývoje demografických křivek bude v roce 2050 takřka třetina populace v seniorském věku, což bude krom velkého tlaku na důchodový systém extrémně zatěžovat i oblast neformální péče. Pokud s tím chceme něco udělat a v budoucnosti se z toho jako neformální pečující nezbláznit, musíme to udělat teď.<br><br>
-                                    V rámci setkání si řekneme něco o spekulativně-strategickém designovém procesu a ukážeme si to na případovce projektu z MPSV. V rámci workshopu se pak zkusíme prostřednictvím několika scénářů vcítit do nás jako budoucích pečujících, řekneme si, jaké pocity, obavy nebo potřeby ve vztahu k budoucnosti máme a zkusíme si spekulativně vymyslet možná řešení ve formě technologií nebo sociálních inovací.
+                                    Populace Česka stárne. Podle vývoje demografických křivek bude v roce 2050 takřka třetina populace v seniorském věku. V rámci setkání si řekneme něco o spekulativně-strategickém designovém procesu a ukážeme si to na případovce projektu z MPSV. V rámci workshopu se zkusíme prostřednictvím scénářů vcítit do nás jako budoucích pečujících a spekulativně vymyslet možná řešení ve formě technologií nebo sociálních inovací.
                                 </div>
                             </div>
 
                             <div class="workshop">
                                 <h4>WORKSHOP č. 2: AI bez magie: Od konverzace k vibecodingu</h4>
                                 <div class="workshop-meta">
-                                    <span>Vojtěch Velísek</span>
-                                    <span>Fyzicky na FF i online (MS Teams)</span>
+                                    <span class="instructor">Vojtěch Velísek</span>
+                                    <span class="location-badge hybrid">🌐 Fyzicky i online (MS Teams)</span>
                                 </div>
                                 <div class="workshop-description">
-                                    Workshop nabízí praktický vstup do světa umělé inteligence bez zbytečného technického žargonu. V první části demystifikujeme AI – vysvětlíme, co se skutečně skrývá za pojmy jako „velké jazykové modely", jak tyto systémy fungují a kde leží jejich možnosti i limity.<br><br>
-                                    Druhá část se zaměří na konverzační AI jako pracovní nástroj. Ukážeme si, jak efektivně formulovat dotazy, jak nastavit kontext konverzace pro lepší výsledky a jak z AI asistentů vytěžit maximum pro studium i práci.<br><br>
-                                    Ve třetí části představíme vibecoding – přístup k programování, kde místo psaní kódu popisujete, co chcete vytvořit, a AI generuje funkční řešení.
+                                    Workshop nabízí praktický vstup do světa umělé inteligence bez zbytečného technického žargonu. Demystifikujeme AI, ukážeme, jak efektivně formulovat dotazy a jak z AI asistentů vytěžit maximum. Ve třetí části představíme vibecoding – přístup k programování, kde místo psaní kódu popisujete, co chcete vytvořit, a AI generuje funkční řešení.
                                 </div>
                             </div>
                         </div>
@@ -460,19 +498,14 @@
                             <div class="workshop">
                                 <h4>Konflikty a náročné situace při facilitaci</h4>
                                 <div class="workshop-meta">
-                                    <span>Tereza Kosnarová</span>
-                                    <span>Jen fyzicky na FF</span>
+                                    <span class="instructor">Tereza Kosnarová</span>
+                                    <span class="location-badge physical">📍 Fyzicky na FF</span>
                                 </div>
                                 <span class="badge">⚠️ Nutná registrace - omezený počet míst!</span>
                                 <a href="https://forms.gle/pS8KSoQGzscarKyNA" target="_blank" class="link">→ Registrace zde</a>
                                 <div class="workshop-description">
-                                    <strong>Témata:</strong><br>
-                                    • Náročné situace, na které můžeme během facilitace narazit<br>
-                                    • Intervence a první pomoc v náročných situacích / během konfliktů<br>
-                                    • Čemu se věnovat v rámci přípravy, abychom se na náročné situace připravili<br>
-                                    • Eskalace / deeskalace konfliktu<br>
-                                    • Vnitřní práce a seberegulační mechanismy<br><br>
-                                    Bude to hodně interaktivní a založeno na vaší energii a ochotě sdílet a ptát se. Kromě diskuze si vyzkoušíme individuální i párové aktivity, inner work, fyzické aktivity + možnost formátu "hot seat".
+                                    <strong>Témata:</strong> Náročné situace při facilitaci • Intervence a první pomoc během konfliktů • Příprava na náročné situace • Eskalace/deeskalace konfliktu • Vnitřní práce a seberegulace<br><br>
+                                    Bude to hodně interaktivní a založeno na vaší energii a ochotě sdílet. Kromě diskuze si vyzkoušíme individuální i párové aktivity, inner work, fyzické aktivity + možnost formátu "hot seat".
                                 </div>
                             </div>
                         </div>
@@ -510,19 +543,19 @@
                         <p>Tyto workshopy navazují na předměty v daném semestru.</p>
 
                         <div class="workshops">
-                            <div class="workshop">
-                                <h4>WORKSHOP pro druháky: Interaction relabelling</h4>
+                            <div class="workshop year-specific">
+                                <h4>🎓 WORKSHOP pro druháky: Interaction relabelling</h4>
                                 <div class="workshop-meta">
-                                    <span>Dominika Potužáková a Petr Kosnar</span>
-                                    <span>Jen fyzicky na FF (místnost B.24)</span>
+                                    <span class="instructor">Dominika Potužáková a Petr Kosnar</span>
+                                    <span class="location-badge physical">📍 Fyzicky na FF (místnost B.24)</span>
                                 </div>
                             </div>
 
-                            <div class="workshop">
-                                <h4>WORKSHOP pro třeťáky: Learning design v praxi</h4>
+                            <div class="workshop year-specific">
+                                <h4>🎓 WORKSHOP pro třeťáky: Learning design v praxi</h4>
                                 <div class="workshop-meta">
-                                    <span>Simona Kramosilová a Michal Černý</span>
-                                    <span>Jen fyzicky na FF (místnost B.23)</span>
+                                    <span class="instructor">Simona Kramosilová a Michal Černý</span>
+                                    <span class="location-badge physical">📍 Fyzicky na FF (místnost B.23)</span>
                                 </div>
                             </div>
                         </div>
